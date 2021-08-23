@@ -1,7 +1,8 @@
 import React from "react";
 import "./SideMenu.scss";
 import logo from "../../images/logo.png";
-import user from "../../assets/images/user.svg"
+import user from "../../assets/images/user.svg";
+
 function SideMenu(props) {
   return (
     <div className="side-menu">
@@ -99,11 +100,14 @@ function SideMenu(props) {
       </div>
       <div className="side-menu-footer">
         <div className="avatar">
-          <img src={user} alt="user"/>
+          <img src={user} alt="user" />
         </div>
         <div className="user-info">
           <h5>firstName LastName</h5>
           <p>Role</p>
+        </div>
+        <div className="btn btn-logout" onClick={processLogout}>
+          <i className="fas fa-sign-out-alt iconLogout"></i>
         </div>
       </div>
     </div>
