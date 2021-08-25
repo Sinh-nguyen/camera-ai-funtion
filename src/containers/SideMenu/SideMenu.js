@@ -106,7 +106,7 @@ function SideMenu(props) {
           <h5>firstName LastName</h5>
           <p>Role</p>
         </div>
-        <div className="btn btn-logout" onClick={processLogout}>
+        <div className="btn btn-logout">
           <i className="fas fa-sign-out-alt iconLogout"></i>
         </div>
       </div>

@@ -3,7 +3,7 @@ import "./Header.scss";
 
 function Header(props) {
   return (
-    <div>
+    <div className="page-header">
       <nav className="navbar navbar-expand-lg navbar-light bg-light header">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarNav">
