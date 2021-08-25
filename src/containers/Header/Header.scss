@@ -1,19 +1,22 @@
 .header {
   height: 74px;
 }
-
-li{
-    margin-right: 60px;
+.page-header {
+  margin-left: 270px;
 }
 
-.nav-link{
-    font-size: 16px;
-    color: #3b3b3b !important;
+li {
+  margin-right: 60px;
+}
+
+.nav-link {
+  font-size: 16px;
+  color: #3b3b3b !important;
 }
 .nav-link.active {
-    color: #3b3b3b !important;
-    font-weight: bold;
+  color: #3b3b3b !important;
+  font-weight: bold;
 }
 .navbar-nav {
-    margin-bottom: -3rem !important;
+  margin-bottom: -3rem !important;
 }

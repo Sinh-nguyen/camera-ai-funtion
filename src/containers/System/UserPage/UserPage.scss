@@ -1,0 +1,96 @@
+.page-title {
+    height: 40px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+  .text-title {
+    height: 29px;
+    width: 210px;
+    color: #3b3b3b;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 29px;
+    display: inline-block;
+  }
+  .form-search {
+    display: inline-flex;
+    float: right;
+    margin-right: 12px;
+    width: 250px;
+    height: 40px;
+  }
+  .btn-primary {
+    margin-right: 16px;
+    float: right;
+    height: 40px !important;
+    width: 156px;
+    font-size: 16px !important;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+    line-height: 19px;
+  }
+  .iconAdd {
+    font-size: 16px !important;
+    margin-right: 9px;
+  }
+  .iconSearch {
+    font-size: 40px !important;
+    margin-right: 9px;
+    color: #3b3b3b;
+  }
+  .btnSearch {
+    height: 40px !important;
+  }
+  .tableUser {
+    margin-left: 16px;
+  }
+  
+  #customers {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td,
+  #customers th {
+    padding: 16px;
+  }
+  
+  #customers tr:nth-child(even) {
+    background-color: white;
+  }
+  
+  #customers tr:hover {
+    background-color: #ddd;
+  }
+  
+  #customers th {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: left;
+    color: #81869d;
+  }
+  
+  .btn-edit-user {
+    width: 50px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: orange;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  
+  .btn-delete-user {
+    width: 50px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: red;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  
