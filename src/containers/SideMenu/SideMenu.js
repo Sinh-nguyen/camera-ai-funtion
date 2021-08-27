@@ -2,8 +2,11 @@ import React from "react";
 import "./SideMenu.scss";
 import logo from "../../images/logo.png";
 import user from "../../assets/images/user.svg";
+import * as actions from "../../store/actions";
+import { useDispatch } from "react-redux";
 
-function SideMenu(props) {
+function SideMenu() {
+  const dispatch = useDispatch();
   return (
     <div className="side-menu">
       <div className="top-section">
@@ -106,9 +109,9 @@ function SideMenu(props) {
           <h5>firstName LastName</h5>
           <p>Role</p>
         </div>
-        <div className="btn btn-logout">
+        <button className="btn btn-logout" onClick={()=>dispatch(actions.processLogout())}>
           <i className="fas fa-sign-out-alt iconLogout"></i>
-        </div>
+        </button>
       </div>
     </div>
   );

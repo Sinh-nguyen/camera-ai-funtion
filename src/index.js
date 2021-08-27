@@ -1,12 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 import App from "./containers/App";
+import reduxStore, { persistor } from './redux';
 import * as serviceWorker from "./serviceWorker";
 import "./styles/styles.scss";
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={reduxStore}>
+    <React.StrictMode>
+      <App persistor={persistor}/>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 
