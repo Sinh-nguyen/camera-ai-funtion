@@ -1,19 +1,20 @@
 // import './App.scss';
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "../routes/Home";
 import Login from "../containers/Auth/Login";
+import {
+  userIsAuthenticated,
+  userIsNotAuthenticated
+} from "../hoc/authentication";
+import { history } from "../redux";
+import Home from "../routes/Home";
 import System from "../routes/System";
+import { path } from "../utils";
 import "./App.scss";
 import Header from "./Header/Header";
 import SideMenu from "./SideMenu/SideMenu";
-import { path } from "../utils";
-import { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { history } from "../redux";
-import {
-  userIsAuthenticated,
-  userIsNotAuthenticated,
-} from "../hoc/authentication";
+import NotFoundPage from "./System/NotFoundPage/NotFoundPage";
 
 function App() {
   const isLoggedIn = useSelector(state=>state.user.isLoggedIn)
