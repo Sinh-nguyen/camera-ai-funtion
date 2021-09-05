@@ -8,9 +8,7 @@ import "./styles/styles.scss";
 
 ReactDOM.render(
   <Provider store={reduxStore}>
-    <React.StrictMode>
       <App persistor={persistor}/>
-    </React.StrictMode>
   </Provider>,
   document.getElementById("root")
 );
