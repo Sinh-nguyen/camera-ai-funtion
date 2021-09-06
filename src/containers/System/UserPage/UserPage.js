@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {
   createNewUserService,
+  editUserService,
   getAllUsers,
 } from "../../../service/userService";
 import ModalUser from "./ModalUser";
 import "./UserPage.scss";
 import { emitter } from "../../../utils/emitter";
+import ModalEditUser from "./ModalEditUser";
 
 function UserPage() {
   const [arrUsers, setArrUsers] = useState([]);
   const [isOpenModalUser, setIsOpenModalUser] = useState(false);
   const [userEdit, setUserEdit] = useState({});
+  const [isOpenModalEditUser, setIsOpenModalEditUser] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -32,8 +35,27 @@ function UserPage() {
         alert(response.errMessage);
       } else {
         await getAllUsersFromReact();
-        setIsOpenModalUser(false)
+        setIsOpenModalUser(false);
         emitter.emit("EVENT_CLEAR_MODAL_DATA");
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleEditUser = (user) => {
+    console.log(user);
+    setIsOpenModalEditUser(true);
+    setUserEdit(user);
+  };
+
+  const doEditUser = async (user) => {
+    console.log("truyền đến doedituser: ",user)
+    try {
+      let res = await editUserService(user);
+      if (res && res.errCode === 0) {
+        setIsOpenModalEditUser(false);
+        await getAllUsersFromReact();
       }
     } catch (e) {
       console.log(e);
@@ -47,6 +69,14 @@ function UserPage() {
         toggleFromParent={() => setIsOpenModalUser(!isOpenModalUser)}
         createNewUser={(data) => createNewUser(data)}
       />
+      {isOpenModalEditUser && (
+        <ModalEditUser
+          isOpen={isOpenModalEditUser}
+          toggleFromParent={() => setIsOpenModalEditUser(!isOpenModalEditUser)}
+          currentUser={userEdit}
+          editUser={(user) => doEditUser(user)}
+        />
+      )}
       <div className="page-title">
         <span className="text-title">User Management</span>
         <button
@@ -91,7 +121,7 @@ function UserPage() {
                     <td>
                       <button
                         className="btn-edit-user"
-                        // onClick={() => handleEditUser(item)}
+                        onClick={() => handleEditUser(item)}
                       >
                         <i className="far fa-edit"></i>
                       </button>

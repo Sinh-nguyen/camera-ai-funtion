@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { emitter } from "../../../utils/emitter";
+import _ from "lodash";
 
-function ModalUser(props) {
+function ModalEditUser(props) {
   const [user, setUser] = useState({
     id: "",
     email: "",
@@ -11,6 +12,20 @@ function ModalUser(props) {
     lastName: "",
     address: "",
   });
+
+  useEffect(() => {
+    let user = props.currentUser;
+    if (user && !_.isEmpty(user)) {
+      setUser({
+        id: user.id,
+        email: user.email,
+        password: "user.email",
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+      });
+    }
+  }, [props.currentUser]);
 
   useEffect(() => {
     emitter.on("EVENT_CLEAR_MODAL_DATA", () => {
@@ -29,6 +44,7 @@ function ModalUser(props) {
     copyState[id] = event.target.value;
     setUser({ ...copyState });
   };
+
   const checkValidateInput = () => {
     let isValid = true;
     let arrInput = ["email", "password", "firstName", "lastName", "address"];
@@ -41,10 +57,13 @@ function ModalUser(props) {
     }
     return isValid;
   };
-  const handleAddNewUser = () => {
+
+  const handleSaveUser = () => {
+    console.log("user change is:", user);
     let isValid = checkValidateInput();
+    console.log("valid is:", isValid);
     if (isValid === true) {
-      props.createNewUser(user);
+      props.editUser(user);
     }
   };
 
@@ -56,9 +75,7 @@ function ModalUser(props) {
         className={"modal-user-container"}
         size="lg"
       >
-        <ModalHeader toggle={props.toggleFromParent}>
-          Create a new user
-        </ModalHeader>
+        <ModalHeader toggle={props.toggleFromParent}>Edit User</ModalHeader>
         <ModalBody>
           <div className="container">
             <div className="row">
@@ -71,6 +88,7 @@ function ModalUser(props) {
                       handleOnChangeInput(event, "email");
                     }}
                     value={user.email}
+                    disabled
                   />
                 </div>
                 <div className="input-container">
@@ -81,6 +99,7 @@ function ModalUser(props) {
                       handleOnChangeInput(event, "password");
                     }}
                     value={user.password}
+                    disabled
                   />
                 </div>
                 <div className="input-container">
@@ -122,7 +141,7 @@ function ModalUser(props) {
             color="primary"
             className="px-3"
             onClick={() => {
-              handleAddNewUser();
+              handleSaveUser();
             }}
           >
             Save Changes
@@ -140,4 +159,4 @@ function ModalUser(props) {
   );
 }
 
-export default ModalUser;
+export default ModalEditUser;
