@@ -1,11 +1,9 @@
-import { push } from "connected-react-router";
-import React, { Component, useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { handleLoginApi } from "../../service/userService";
 // import { handleLoginApi } from "../../services/userService";
 import * as actions from "../../store/actions";
 import "./Login.scss";
-import { handleLoginApi } from "../../service/userService";
-import { useHistory } from "react-router-dom";
 
 function Login() {
   const [username, setUserName] = useState("");

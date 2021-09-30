@@ -14,10 +14,9 @@ import { path } from "../utils";
 import "./App.scss";
 import Header from "./Header/Header";
 import SideMenu from "./SideMenu/SideMenu";
-import NotFoundPage from "./System/NotFoundPage/NotFoundPage";
 
 function App() {
-  const isLoggedIn = useSelector(state=>state.user.isLoggedIn)
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <Fragment>
       <Router history={history}>
@@ -27,8 +26,14 @@ function App() {
           <div className="content-container">
             <Switch>
               <Route path={path.HOME} exact component={Home} />
-              <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-              <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+              <Route
+                path={path.LOGIN}
+                component={userIsNotAuthenticated(Login)}
+              />
+              <Route
+                path={path.SYSTEM}
+                component={userIsAuthenticated(System)}
+              />
             </Switch>
           </div>
         </div>
